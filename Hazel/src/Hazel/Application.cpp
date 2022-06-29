@@ -10,15 +10,14 @@ namespace Hazel
 
 	Application::~Application()
 	{
-
 	}
+
 	void Application::Run()
 	{
 		KeyPressedEvent e{ 1280, 720 };
 		// Application Loop
 		while(true)
 		{
-			HZ_INFO(e);
 		}
 	}
 }

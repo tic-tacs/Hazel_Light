@@ -3,9 +3,6 @@
 
 #pragma once
 
-#include <string>
-#include <functional>
-
 #include "Core.h"
 
     // Events in Hazel are currently blocking, meaning an even occurs it is immediately dispatched
