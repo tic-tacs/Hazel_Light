@@ -4,7 +4,9 @@
 #pragma once
 
 #include "Window.h"
-#include "GLFW/glfw3.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <imgui.h>
 #include "Log.h"
 
 #include "Events/ApplicationEvent.h"

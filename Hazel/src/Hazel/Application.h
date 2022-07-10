@@ -6,6 +6,7 @@
 #include "Core.h"
 #include "Window.h"
 #include "Events/ApplicationEvent.h"
+#include "LayerStack.h"
 
 namespace Hazel{
     class HAZEL_API Application
@@ -15,12 +16,22 @@ namespace Hazel{
         virtual ~Application();
 
         void Run();
-
         void OnEvent(Event& e);
+
+        void PushLayer(Layer* layer);
+        void PushOverlay(Layer* layer);
+
+        static inline Application& Get() { return *s_Instance; }
+        inline Window& GetWindow() { return *m_Window; }
     private:
-        bool OnWindowClosed(WindowCloseEvent& e);
         std::unique_ptr<Window> m_Window;
         bool m_Running = true;
+
+        LayerStack m_layerStack;
+    private:
+        bool OnWindowClosed(WindowCloseEvent& e);
+
+        static Application* s_Instance;
     };
 
     // To be defined by client
