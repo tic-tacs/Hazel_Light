@@ -66,8 +66,7 @@ namespace Hazel{
 		HZ_CORE_ASSERT(status, "Failed to initialzie glad");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
-
-
+		
 		// set GLFW callback
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height){
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -76,52 +75,60 @@ namespace Hazel{
 
 			WindowResizeEvent event(width, height);
 			data.EventCallback(event);
-		});
+			});
 
-		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window){
+		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowCloseEvent event{};
 			data.EventCallback(event);
-		});
+			});
 
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods){
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-			switch(action)
+			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					KeyPressedEvent event(key, 0);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					KeyReleasedEvent event(key);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_REPEAT:
-				{
-					KeyPressedEvent event(key, 0);
-					data.EventCallback(event);
-					break;
-				}
+			case GLFW_PRESS:
+			{
+				KeyPressedEvent event(key, 0);
+				data.EventCallback(event);
+				break;
 			}
-		});
+			case GLFW_RELEASE:
+			{
+				KeyReleasedEvent event(key);
+				data.EventCallback(event);
+				break;
+			}
+			case GLFW_REPEAT:
+			{
+				KeyPressedEvent event(key, 0);
+				data.EventCallback(event);
+				break;
+			}
+			}
+			});
 
-		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods){
+			glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode){
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
+			});
+
+
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-			switch(action)
+			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					MouseButtonPressedEvent event(button);
-					data.EventCallback(event);
-					break;
-				}	
-				case GLFW_RELEASE:
+			case GLFW_PRESS:
+			{
+				MouseButtonPressedEvent event(button);
+				data.EventCallback(event);
+				break;
+			}
+			case GLFW_RELEASE:
 				{
 					MouseButtonReleasedEvent event(button);
 					data.EventCallback(event);

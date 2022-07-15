@@ -20,6 +20,9 @@ namespace Hazel
             return ss.str();
         }
 
+        inline unsigned int GetWidth() { return m_Width; }
+        inline unsigned int GetHeight() { return m_Height; }
+
         EVENT_CLASS_TYPE(WindowResize);
         EVENT_CLASS_CATEGORY(EventCategoryApplication);
     private:

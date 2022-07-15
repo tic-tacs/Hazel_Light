@@ -15,7 +15,11 @@ add_library(${PROJECT_NAME} SHARED
 	./src/Hazel/ImGui/ImGuiLayer.cpp
 	./src/Hazel.h
 	./src/Hazel/Window.h
+	./src/Hazel/Input.h
+	./src/Hazel/KeyCodes.h
+	./src/Hazel/MouseButtonCodes.h
 	./src/Platform/Windows/WindowsWindow.cpp
+	./src/Platform/Windows/WindowsInput.cpp
 	./src/Platform/OpenGL/ImGuiRenderer.cpp
 	./src/Platform/OpenGL/imgui_impl_opengl3.cpp
 	./src/Platform/OpenGL/imgui_impl_opengl3_loader.h
