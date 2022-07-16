@@ -8,7 +8,10 @@
 #include "Events/ApplicationEvent.h"
 #include "LayerStack.h"
 
+#include "Hazel/ImGui/ImGuiLayer.h"
+
 namespace Hazel{
+    class ImGuiLayer;
     class HAZEL_API Application
     {
     public:
@@ -25,6 +28,7 @@ namespace Hazel{
         inline Window& GetWindow() { return *m_Window; }
     private:
         std::unique_ptr<Window> m_Window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
 
         LayerStack m_layerStack;
