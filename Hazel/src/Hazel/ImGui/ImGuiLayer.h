@@ -8,7 +8,6 @@
 #include "Hazel/Events/MouseEvent.h"
 #include "Hazel/Events/KeyEvent.h"
 
-#include "Hazel/Application.h"
 namespace Hazel {
     class HAZEL_API ImGuiLayer : public Layer
     {
