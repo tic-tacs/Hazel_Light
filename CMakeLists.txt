@@ -21,14 +21,5 @@ target_include_directories(${PROJECT_NAME}
 	PRIVATE "${PROJECT_SOURCE_DIR}/Hazel/src"
 	)
 
-# Copy Hazel dll on build
-add_custom_command(
-	TARGET ${PROJECT_NAME} POST_BUILD
-	COMMAND ${CMAKE_COMMAND} -E copy_if_different
-	"${PROJECT_BINARY_DIR}/Hazel/bin/${CMAKE_GENERATOR_PLATFORM}/${CMAKE_BUILD_TYPE}/HAZEL_LIGHT.dll"
-	${PROJECT_BINARY_DIR}
-	COMMENT "Copying Hazel dll into ${PROJECT_NAME} binary folder"
-)
-
 # Macro Definitions
 add_compile_definitions(HZ_PLATFORM_WINDOWS)

@@ -13,7 +13,6 @@ namespace Hazel{
 		
 		s_CoreLogger = spdlog::stdout_color_mt("HAZEL");
 		s_ClientLogger = spdlog::stdout_color_mt("APP");
-
 	}
 
 }

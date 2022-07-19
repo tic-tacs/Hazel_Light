@@ -4,14 +4,15 @@
 #pragma once
 
 #include "Window.h"
-#include <glad/glad.h>
+#include "Hazel/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
-#include <imgui.h>
 #include "Log.h"
 
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
+
 
 namespace Hazel{
     class WindowsWindow : public Window
@@ -36,6 +37,7 @@ namespace Hazel{
         virtual void ShutDown();
     private:
         GLFWwindow* m_Window;
+        GraphicsContext* m_Context;
 
         struct WindowData
         {
